@@ -1,0 +1,7 @@
+---
+# defaults file for jenkins
+# Default vars (can be overridden if needed)
+jenkins_repo_key_url: https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+jenkins_repo_path: /etc/apt/sources.list.d/jenkins.list
+jenkins_keyring_path: /etc/apt/keyrings/jenkins-keyring.asc
+
