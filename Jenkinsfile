@@ -8,14 +8,18 @@ pipeline {
       }
     }
 
-    stage('Run Ansible Playbook') {
-  steps {
-    dir('ansible') {
-      sh 'ansible-playbook -i inventory playbook.yml'
+    stage('Debug Workspace') {
+      steps {
+        sh 'pwd'
+        sh 'ls -l'
+      }
     }
-  }
-}
 
+    stage('Run Ansible Playbook') {
+      steps {
+        sh 'ansible-playbook -i inventory playbook.yml'
+      }
+    }
 
     stage('Verify Jenkins') {
       steps {
