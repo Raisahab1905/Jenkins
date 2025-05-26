@@ -10,7 +10,10 @@ pipeline {
 
         stage('Run Ansible Playbook') {
             steps {
-                sh 'ansible-playbook -i inventory.ini playbook.yml'
+                sshagent(['jenkins-ssh-key'])
+                sh '''
+                      ansible-playbook -i inventory.ini playbook.yml
+                    '''
             }
         }
 
