@@ -8,23 +8,24 @@ pipeline {
             }
         }
 
-        stage('Run Ansible Playbook') {
-          steps {
-        sshagent(['jenkins-ssh-key']) {
-            sh '''
-            pwd
-            ls -l
-            cat inventory.ini
-            ansible-playbook -i inventory.ini playbook.yml
-            '''
+        stage('Debug Workspace') {
+            steps {
+                sh 'pwd'
+                sh 'ls -l'
+            }
         }
-    }
-}
 
-                }
+        stage('Run Ansible Playbook') {
+            steps {
+                sh 'ansible-playbook -i inventory.ini playbook.yml'
+            }
+        }
 
-
-
+        stage('Verify Jenkins') {
+            steps {
+                sh 'curl -I http://localhost:8080'
+            }
+        }
     }
 
     post {
@@ -35,4 +36,4 @@ pipeline {
             echo '✅ Jenkins setup completed successfully!'
         }
     }
-
+}
