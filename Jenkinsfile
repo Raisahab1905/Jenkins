@@ -20,8 +20,7 @@ pipeline {
     dir('Jenkins') {
         sh 'ansible-playbook -i inventory playbook.yml'
     }
-}
-    }
+ }
 
     stage('Verify Jenkins') {
       steps {
