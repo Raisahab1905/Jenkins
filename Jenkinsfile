@@ -35,4 +35,4 @@ pipeline {
             echo '✅ Jenkins setup completed successfully!'
         }
     }
-}
+
