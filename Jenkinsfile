@@ -9,10 +9,7 @@ pipeline {
         }
 
         stage('Run Ansible Playbook') {
-            steps {
-                sshagent(['jenkins-ssh-key']) {
-                    stage('Run Ansible Playbook') {
-    steps {
+          steps {
         sshagent(['jenkins-ssh-key']) {
             sh '''
             pwd
