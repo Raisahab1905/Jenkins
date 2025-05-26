@@ -8,24 +8,12 @@ pipeline {
             }
         }
 
-        stage('Debug Workspace') {
-            steps {
-                sh 'pwd'
-                sh 'ls -l'
-            }
-        }
-
         stage('Run Ansible Playbook') {
             steps {
                 sh 'ansible-playbook -i inventory playbook.yml'
             }
         }
 
-        stage('Verify Jenkins') {
-            steps {
-                sh 'curl -I http://localhost:8080'
-            }
-        }
     }
 
     post {
