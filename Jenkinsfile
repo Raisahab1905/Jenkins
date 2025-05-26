@@ -18,7 +18,7 @@ pipeline {
 
     stage('Run Ansible Playbook') {
       steps {
-        dir('ansible') {
+        dir('Jenkins') {
           sh 'ansible-playbook -i inventory playbook.yml'
         }
       }
