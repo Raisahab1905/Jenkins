@@ -12,12 +12,15 @@ pipeline {
       steps {
         sh 'pwd'
         sh 'ls -l'
+        sh 'ls -l ansible'
       }
     }
 
     stage('Run Ansible Playbook') {
       steps {
-        sh 'ansible-playbook -i inventory playbook.yml'
+        dir('ansible') {
+          sh 'ansible-playbook -i inventory playbook.yml'
+        }
       }
     }
 
