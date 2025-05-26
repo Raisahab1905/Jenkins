@@ -15,6 +15,19 @@ pipeline {
                 }
             }
         }
+        stage('Run Ansible Playbook') {
+          steps {
+           sshagent(['jenkins-ssh-key']) {
+            sh '''
+            pwd
+            ls -l
+            cat inventory.ini
+            ansible-playbook -i inventory.ini playbook.yml
+            '''
+        }
+    }
+}
+
 
     }
 
